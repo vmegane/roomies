@@ -26,8 +26,7 @@ class LoginWrapper extends React.Component {
         event.preventDefault();
         const email = this.state.email;
         const password = this.state.password;
-        const auth = firebase.auth();
-        const promise = auth.signInWithEmailAndPassword(email, password)
+        const promise = firebase.auth().signInWithEmailAndPassword(email, password)
         promise
             .then(() => {
                 this.props.manageLogin(true);
@@ -41,7 +40,6 @@ class LoginWrapper extends React.Component {
         event.preventDefault();
         console.log('clicked logout', this.state.email)
         firebase.auth().signOut;
-        console.log('signed out');
         this.setState({
             email: '@',
             password: '',
@@ -54,8 +52,8 @@ class LoginWrapper extends React.Component {
     
     render() {
         return (
-            <div>                
-                { this.props.isLoggedIn===true && <h2>Welcome back, {this.props.currentUser.displayName} :)</h2> }
+            <div className="logged-in-user-greeting">                
+                { this.props.isLoggedIn===true && <h2>Nice to have you back, {this.props.userName} :)</h2> }
                 <form>
                 { this.props.isLoggedIn===false && <input type="email" value={this.props.email} onChange={this.fillEmail} /> }
                 { this.props.isLoggedIn===false && <input type="password" value={this.props.password} onChange={this.fillPassword} /> } 

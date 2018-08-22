@@ -36,25 +36,27 @@ class SignupWrapper extends React.Component {
         const password = this.state.password;
         const auth = firebase.auth();
         const user = auth.currentUser;
+        console.log('1', user)
         let newUser; 
         const promise = auth.createUserWithEmailAndPassword(email, password);
         promise
-            .then(() => {
+            .then((r) => {
+            console.log('r', r.user.uid);
+                
                 this.setState({
                     loggedin: true,
-                    userID: user.uid
+                    userID: r.user.uid
                 })
-                console.log('created & signedin ', this.state.userID)
-            }).then(() => {
-                user.updateProfile({displayName: this.state.name});
-            }) 
+            })
             .then(() => {
-                console.log(this.state);
-                newUser = {
+                console.log('create new user');
+                    newUser = {
                     userID: this.state.userID,
                     name: this.state.name,
                     email: this.state.email
                 };
+                console.log('created', newUser);
+
             })
             .then(() => {
                 fetch(`https://roomies-80535.firebaseio.com/users/${this.state.userID}.json`,
@@ -63,8 +65,10 @@ class SignupWrapper extends React.Component {
                         body: JSON.stringify(newUser)
                     }
                 )
-            }).then( ()=> {
-                this.props.manageLoggin();
+            })
+            .then( ()=> {
+                console.log('switch to logged in');
+                this.props.manageLogin(true);
             })
             .catch(error => console.log(error.message))
      }

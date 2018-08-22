@@ -1,0 +1,29 @@
+.navigation {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    background-color: burlywood;
+}
+
+.navigation ul {
+    color: white;
+    margin: 20px auto 0 auto;
+}
+
+.navigation ul li a {
+    color: white;
+}
+.nav-header {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: beige;
+    margin: 20px auto 0 auto;
+}
+
+.nav-header h2 {
+    text-align: center;
+    margin: 37px auto 0px auto;
+    color: #1abc9c;
+}

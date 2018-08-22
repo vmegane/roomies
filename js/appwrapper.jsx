@@ -25,10 +25,29 @@ class AppWrapper extends React.Component {
         this.state = {
             loggedin: false,
             currentUser: {},
-            signupopen: false
+            signupopen: false, 
+            userData: {}
         }
+        
+    }
+    
+    componentWillMount() {
         this.watchAuthState();
     }
+
+    componentDidUpdate() {
+        if (this.state.currentUser!={}) {
+            fetch(`https://roomies-80535.firebaseio.com/users/${this.state.userId}.json`)
+            .then((response) => response.json())
+            .then((response) => {
+                this.setState({
+                    userData: response
+                })
+            })
+        } 
+    }
+
+
 
     manageLogin = (loginstate) => {
         this.setState({
@@ -46,10 +65,15 @@ class AppWrapper extends React.Component {
             if (firebaseUser) {
                 this.setState({
                     currentUser: firebaseUser,
-                    loggedin: true
+                    loggedin: true,
+                    userId: firebaseUser.uid
                 })
                 console.log('watcher: user loggedin: ', firebaseUser.uid)
             } else {
+                this.setState({
+                    currentUser: null,
+                    loggedin: false
+                })
                 console.log('not logged in')
             }
         })
@@ -64,7 +88,7 @@ class AppWrapper extends React.Component {
                         <LoginWrapper
                             manageLogin={this.manageLogin}
                             isLoggedIn={this.state.loggedin}
-                            currentUser={this.state.currentUser}
+                            userName={this.state.userData.name}
                         />
                         <Nav />
                         <Switch>
@@ -96,7 +120,6 @@ class AppWrapper extends React.Component {
                                 <Route path='/signup' render={() => <SignupWrapper 
                                 manageLoggin={this.manageLogin}
                                 manageSignup={this.manageSignup}
-                                currentUser={this.state.currentUser}
                                 />} />
 </div>
                            

@@ -9,8 +9,10 @@ class Nav extends React.Component {
     
     render() {
         return (
-            <div>
-                <h2>Menu</h2>
+            <div className="navigation">
+               <div className="nav-header">
+               <h2>Menu</h2>
+                   </div> 
                 <ul>
                     <li>
                         <Link to="/latest">Latest</Link>

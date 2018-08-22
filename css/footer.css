@@ -1,0 +1,10 @@
+.main-footer {
+    height: auto;
+    background-color: #1abc9c;
+    color: #F5ECCC;
+    text-align: center;
+}
+
+.main-footer h1 {
+    padding: 20px 20px 20px 20px;
+}
