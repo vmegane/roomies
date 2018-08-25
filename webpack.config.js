@@ -1,4 +1,4 @@
-//Konfiguracja Webpack
+
 var path = require("path");
 
 module.exports = {
