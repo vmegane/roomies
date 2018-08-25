@@ -27,9 +27,7 @@ class Nav extends React.Component {
         let classToToggle = this.state.visible === false ? "navigation hideMenu" : "navigation showMenu";
         return (
             <div>
-                <div className="burger-menu-icon" onClick={this.handleClick}>
-                    {/* <h2>Menu</h2> */}
-                </div>
+                <div className="burger-menu-icon" onClick={this.handleClick}></div>
                 <div className={classToToggle}>
                     <ul>
                         <li>
