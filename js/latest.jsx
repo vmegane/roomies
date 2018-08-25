@@ -9,6 +9,16 @@ class Latest extends React.Component {
         return (
             <div>
                 <h2>All you need to know</h2>
+                <ul>
+                    <li>placeholder sndsnfsdio</li>
+                    <li>placeholder sndsnfsdio placeholder sndsnfsdio</li>
+                    <li>placeholder sndsnfsdioplaceholder sndsnfsdioplaceholder sndsnfsdioplaceholder sndsnfsdioplaceholder sndsnfsdio</li>
+                    <li>placeholder sndsnfsdioplaceholder sndsnfsdio</li>
+                    <li>placeholder sndsnfsdioplaceholder sndsnfsdio</li>
+                    <li>placeholder sndsnfsdioplaceholder sndsnfsdio</li>
+                    <li>placeholder sndsnfsdioplaceholder sndsnfsdio</li>
+                    <li>placeholder sndsnfsdioplaceholder sndsnfsdio</li>
+                </ul>
             </div>
         )
     }

@@ -93,7 +93,7 @@ class AppWrapper extends React.Component {
                         <Nav />
                         <Switch>
                             <Route exact path='/fridge' component={Fridge} />
-                            <Route path='/latest' component={Latest} />
+                            <Route exact path='/' component={Latest} />
                             <Route path='/home' component={Home} />
                             <Route path='/user' component={User} />
                             <Route path='/createhome' component={CreateHome}/>
