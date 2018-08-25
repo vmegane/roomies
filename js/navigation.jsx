@@ -19,33 +19,36 @@ class Nav extends React.Component {
 
     handleClick = (e) => {
         this.toggleMenu();
-            console.log("clicked");
+        console.log("clicked");
         e.stopPropagation();
-      }
+    }
 
     render() {
+        let classToToggle = this.state.visible === false ? "navigation hideMenu" : "navigation showMenu";
         return (
-            <div className="navigation">
-                <div className="nav-header" onClick={this.handleClick}>
-                    <h2>Menu</h2>
+            <div>
+                <div className="burger-menu-icon" onClick={this.handleClick}>
+                    {/* <h2>Menu</h2> */}
                 </div>
-                <ul>
-                    <li>
-                        <Link to="/latest">Latest</Link>
-                    </li>
-                    <li>
-                        <Link to="/fridge">Frigde</Link>
-                    </li>
-                    <li>
-                        <Link to="/home">Your home</Link>
-                    </li>
-                    <li>
-                        <Link to="/user">Your profile</Link>
-                    </li>
-                    <li>
-                        <Link to="/help">Help</Link>
-                    </li>
-                </ul>
+                <div className={classToToggle}>
+                    <ul>
+                        <li>
+                            <Link to="/latest">Latest</Link>
+                        </li>
+                        <li>
+                            <Link to="/fridge">Frigde</Link>
+                        </li>
+                        <li>
+                            <Link to="/home">Your home</Link>
+                        </li>
+                        <li>
+                            <Link to="/user">Your profile</Link>
+                        </li>
+                        <li>
+                            <Link to="/help">Help</Link>
+                        </li>
+                    </ul>
+                </div>
             </div>
         )
     }
