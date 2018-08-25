@@ -6,16 +6,38 @@ class CreateHome extends React.Component {
         super(props);
         this.state = {
             homename: '',
-            roommates: [],
-            homeid: '' }
+            homeid: '',
+            numberOfHomes: '' 
+        }
     }
-    
-    handleEmails = (e) => {
-        let prevState = this.state.roommates;
+
+    componentDidMount() {
+        fetch(`https://roomies-80535.firebaseio.com/homes.json`)
+            .then(resp => resp.json())
+            .then(resp => this.setState({ numberOfHomes: Object.keys(resp).length }))
+    }
+
+    fillName = (e) => {
         this.setState({
-            roommates: [e.target.value, ...prevState]
+            homename: e.target.value
         })
-        
+    }
+
+    handleClick = (e) => {
+        e.preventDefault();
+        const newHome = {
+            homename: this.state.homename
+        }
+        fetch(`https://roomies-80535.firebaseio.com/homes/home-${this.state.numberOfHomes+1}.json`,
+            {
+                method: "PUT",
+                body: JSON.stringify(newHome)
+            }
+        ).then( () => {
+            this.setState({
+                homeid: `home-${this.state.numberOfHomes+1}`
+            })
+        })
     }
 
     render() {
@@ -24,14 +46,14 @@ class CreateHome extends React.Component {
             <div>
                 <h2>Creating your home</h2>
                 <form id="form-create-home">
-                    <label> Your home name <br/>
-                    <input type="text" /> <br />
-                    invite roomies
-                    </label><br />
-                        <label>
-                            <input value={this.state.roommates[0]} type="text" onChange={this.handleEmails}/>
-                        </label>
-                        <button value="" onClick={this.addInput}>+</button>
+                    <label> Your home name <br />
+                        <input value={this.state.homename} type="text" onChange={this.fillName} /> <br />
+                    </label>
+                    <button onClick={this.handleClick}>Continue</button> <br/>
+                    invite roomies (send the link below to your roommates)
+                    <div className="link">
+                       { this.state.homeid!=='' &&  <p>http://www.roomies.com/join/{this.state.homeid}</p> }
+                    </div>
 
                 </form>
             </div>
