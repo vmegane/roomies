@@ -8,7 +8,7 @@ class Header extends React.Component {
     render() {
         return (
             <div className="main-header">
-                <h1>Welcome Roomie</h1>
+                <h1>Welcome</h1>
             </div>
         )
     }

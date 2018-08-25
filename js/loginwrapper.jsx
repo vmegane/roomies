@@ -53,10 +53,11 @@ class LoginWrapper extends React.Component {
     render() {
         return (
             <div className="logged-in-user-greeting">                
-                { this.props.isLoggedIn===true && <h2>Nice to have you back, {this.props.userName} :)</h2> }
-                <form>
-                { this.props.isLoggedIn===false && <input type="email" value={this.props.email} onChange={this.fillEmail} /> }
-                { this.props.isLoggedIn===false && <input type="password" value={this.props.password} onChange={this.fillPassword} /> } 
+                { this.props.isLoggedIn===true && <h2>{this.props.userName} :)</h2> }
+
+                <form className="form"> 
+                { this.props.isLoggedIn===false && <input type="email" placeholder="type your email" value={this.props.email} onChange={this.fillEmail} /> }
+                { this.props.isLoggedIn===false && <input type="password" placeholder="type your password" value={this.props.password} onChange={this.fillPassword} /> } 
                 { this.props.isLoggedIn===false && <input type="submit" value="login" onClick={this.login} />}  
                 { this.props.isLoggedIn===true && <input type="submit" value="log out" onClick={this.logout} /> }
                 </form>

@@ -5,7 +5,7 @@ class SignupWrapper extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '@',
+            email: '',
             password: '',
             userID: '',
             name: ''
@@ -78,13 +78,12 @@ class SignupWrapper extends React.Component {
         return (
             <div>
                 <h2>Create Account</h2>
-                <form>
-                    <label>Name
-                        <input type="text" value={this.state.name} onChange={this.fillName} /></label>
-                    <label>e-mail
-                        <input type="email" value={this.state.email} onChange={this.fillEmail} /></label>
-                    <label>Password
-                        <input type="password" value={this.state.password} onChange={this.fillPassword} /></label>
+                <form className="form">
+                    
+                        <input type="text" value={this.state.name} placeholder="type your name" onChange={this.fillName} />
+                    
+                        <input type="email" value={this.state.email} placeholder="type your email" onChange={this.fillEmail} />
+                        <input type="password" value={this.state.password} placeholder="type your password" onChange={this.fillPassword} />
                     
                     <input type="submit" value="sign up" onClick={this.completeSignup} />
                 </form>

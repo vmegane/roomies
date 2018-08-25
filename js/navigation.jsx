@@ -24,11 +24,12 @@ class Nav extends React.Component {
     }
 
     render() {
-        let classToToggle = this.state.visible === false ? "navigation hideMenu" : "navigation showMenu";
+        let menuShowHide = !this.state.visible ? "navigation hideMenu" : "navigation showMenu";
+        // let menuHide = this.state.visible ? "hideMenu" : "hideMenu"
         return (
             <div>
                 <div className="burger-menu-icon" onClick={this.handleClick}></div>
-                <div className={classToToggle}>
+                <div className={menuShowHide} onClick={this.handleClick}>
                     <ul>
                         <li>
                             <Link to="/latest">Latest</Link>
