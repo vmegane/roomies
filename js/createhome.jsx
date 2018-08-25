@@ -5,40 +5,32 @@ class CreateHome extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            homename: '',
-            numberofroomies: ''
-        }
+            homename: ''        }
     }
     setNumberofRoomies = (e) => {
-            e.preventDefault();
-            this.setState({numberofroomies: e.target.value})
+        e.preventDefault();
+        this.setState({ numberofroomies: e.target.value })
     }
     setCustomNumberofRoomies = (e) => {
         e.preventDefault();
-        this.setState({numberofroomies: e.target.value})
-}
+        this.setState({ numberofroomies: e.target.value })
+    }
 
     render() {
-        let inputs = [];
-        for (let i = 0; i < this.state.numberofroomies; i++) {
-           inputs[i] = <input type="email" key={`inputfield-${i}`}/>
-        }
+        
         return (
             <div>
                 <h2>Creating your home</h2>
-                <form>
+                <form id="form-create-home">
                     <label> Your home name
-                    <input type="text"/>
-                    </label><br/>
-                    <label>
-                        Number of roommates
-                        <button value="2" onClick={this.setNumberofRoomies}>2</button>                        
-                        <button value="3" onClick={this.setNumberofRoomies}>3</button>
-                        <button value="4" onClick={this.setNumberofRoomies}>4</button>
-                        <input placeholder="other" size="5" value={this.state.numberofroomies} onChange={this.setCustomNumberofRoomies} type="number"/>
+                    <input type="text" />
+                    invite roomies
+                    </label><br />
+                        <label>
+                            <input value="email..." type="text"/>
+                        </label>
+                        <button value="" onClick={this.addInput}>+</button>
 
-                    </label>
-                    {inputs.map( element => element)}
                 </form>
             </div>
         )
